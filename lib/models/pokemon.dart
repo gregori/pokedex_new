@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:pokedex/utils/constants.dart';
 
 class Pokemon {
