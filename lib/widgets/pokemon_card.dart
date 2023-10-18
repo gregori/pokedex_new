@@ -18,14 +18,26 @@ class PokemonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(7),
-      decoration: getContainerDecoration(),
-      child: Stack(
-        children: [
-          PokemonCardBackground(id: pokemon.id),
-          PokemonCardData(pokemon: pokemon),
-        ],
+    return InkWell(
+      borderRadius: BorderRadius.circular(7),
+      enableFeedback: true,
+      splashColor: Colors.red.shade50,
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/details',
+          arguments: pokemon,
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(7),
+        decoration: getContainerDecoration(),
+        child: Stack(
+          children: [
+            PokemonCardBackground(id: pokemon.id),
+            PokemonCardData(pokemon: pokemon),
+          ],
+        ),
       ),
     );
   }
