@@ -1,8 +1,10 @@
+import 'package:pokedex/models/pokemon_data.dart';
 import 'package:pokedex/utils/constants.dart';
 
 class Pokemon {
   String name;
   String url;
+  PokemonData? pokemonData;
 
   Pokemon({required this.name, required this.url});
 

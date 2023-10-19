@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/api/pokeapi.dart';
 import 'package:pokedex/models/pokemon.dart';
 import 'package:pokedex/widgets/pokemon_card_background.dart';
 import 'package:pokedex/widgets/pokemon_card_data.dart';
@@ -16,6 +17,20 @@ class PokemonCard extends StatelessWidget {
         ),
       );
 
+  Future<void> getPokemonData() async {
+    pokemon.pokemonData = await PokeAPI.getPokemonData(
+      pokemon.url,
+    );
+  }
+
+  void navigateToDetails(BuildContext context) {
+    Navigator.pushNamed(
+      context,
+      '/details',
+      arguments: pokemon,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -23,11 +38,7 @@ class PokemonCard extends StatelessWidget {
       enableFeedback: true,
       splashColor: Colors.red.shade50,
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/details',
-          arguments: pokemon,
-        );
+        getPokemonData().then((value) => navigateToDetails(context));
       },
       child: Container(
         padding: const EdgeInsets.all(7),
