@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/models/pokemon.dart';
+import 'package:pokedex/widgets/detail_back_button.dart';
+import 'package:pokedex/widgets/detail_data.dart';
 import 'package:pokedex/widgets/detail_image.dart';
+import 'package:pokedex/widgets/detail_title.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
@@ -19,11 +22,13 @@ class DetailsScreen extends StatelessWidget {
         child: Column(
           children: [
             DetailImage(pokemon: pokemon),
-            // DetailTitle(pokemon: pokemon),
-            // DetailData(pokemon: pokemon),
+            DetailTitle(pokemon: pokemon),
+            DetailData(pokemon: pokemon),
           ],
         ),
       ),
+      floatingActionButton: const DetailBackButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }
